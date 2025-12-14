@@ -26,7 +26,18 @@ Market.loc задуман как прототип онлайн‑маркетп�
 
 Laravel Breeze — минималистичный пакет аутентификации для Laravel.
 
-composer require laravel/breeze --dev
-php artisan breeze:install
-npm install && npm run dev
-php artisan migrate
+- composer require laravel/breeze --dev
+- php artisan breeze:install
+- npm install && npm run dev
+- php artisan migrate
+
+## 🛠 Настройки панели администратора
+
+Админ‑панель для управления контентом и пользователями.
+
+### 🎨 Blade‑шаблоны и структура
+
+- header.blade.php — верхняя панель навигации;
+- sidebar.blade.php — боковое меню;
+- footer.blade.php — нижняя часть страницы;
+- dashboard.blade.php — основной контент.
