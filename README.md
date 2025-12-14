@@ -41,3 +41,9 @@ Laravel Breeze — минималистичный пакет аутентифи�
 - sidebar.blade.php — боковое меню;
 - footer.blade.php — нижняя часть страницы;
 - dashboard.blade.php — основной контент.
+
+### ⚙️ Выход из админ панели
+
+-  admin.logout - Route - exit admin
+-  AdminController & method - adminLogout
+-  Template/blade - header
