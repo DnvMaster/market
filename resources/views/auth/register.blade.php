@@ -1,52 +1,90 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
-        @csrf
+<!DOCTYPE html>
+  <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ __('Регистрация') }}</title>
+    <link rel="shortcut icon" href="{{ asset('backend/images/favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('backend/images/favicon.ico') }}" type="image/x-icon">
+    <link href="{{ asset('backend/css/app.min.css') }}" rel="stylesheet" id="app-style">
+    <link href="{{ asset('backend/css/icons.min.css') }}" rel="stylesheet">
+  </head>
+   <body class="bg-white">
+    <div class="account-page">
+      <div class="container-fluid p-0">
+        <div class="row align-items-center g-0">
+          <div class="col-xl-5">
+            <div class="row">
+              <div class="col-md-7 mx-auto">
+                <div class="mb-0 border-0 p-md-5 p-lg-0 p-4">
+                  <div class="mb-4 p-0">
+                    <a href="{{ url('/') }}" class="auth-logo">
+                      <img src="{{ asset('backend/images/logo-dark.png') }}" alt="logo-dark" class="mx-auto" height="28">
+                    </a>
+                  </div>
+                  <div class="pt-0">
+                    <form action="{{ route('register') }}" method="POST" class="my-4">
+                      @csrf
 
-        <!-- Name -->
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                       <div class="form-group mb-3">
+                        <label for="name" class="form-label">{{ __("Введите имя") }}</label>
+                        <input class="form-control" type="text" name="name" id="name" placeholder="{{ __("Введите своё имя или логин") }}">
+                      </div>
+
+                      <div class="form-group mb-3">
+                        <label for="email" class="form-label">{{ __("Електронный адрес") }}</label>
+                        <input class="form-control" type="email" name="email" id="email" placeholder="{{ __("Введите электронный адрес") }}">
+                      </div>
+
+                      <div class="form-group mb-3">
+                        <label for="password" class="form-label">{{ __('Введите пароль') }}</label>
+                        <input class="form-control" type="password" name="password" id="password" placeholder="{{ __('**********') }}">
+                      </div>
+
+                      <div class="form-group mb-3">
+                        <label for="password_confirmation" class="form-label">{{ __('Повторите пароль') }}</label>
+                        <input class="form-control" type="password" name="password_confirmation" id="password_confirmation" placeholder="{{ __('**********') }}">
+                      </div>
+                
+                                       
+                      <div class="form-group mb-0 row">
+                        <div class="col-12">
+                          <div class="d-grid">
+                            <button class="btn btn-primary" type="submit"> {{ __('Зарегистрироваться') }} </button>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                    <div class="text-center text-muted mb-4">
+                      <p class="mb-0">{{ __("Уже зарегистрированы?") }}<a class='text-primary ms-2 fw-medium' href='{{ route('login') }}'>{{ __('Войти') }}</a></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-7">
+            <div class="account-page-bg p-md-5 p-4">
+              <div class="text-center">
+                <h3 class="text-dark mb-3 pera-title">{{ __('Регистрация нового пользователя') }}</h3>
+                <div class="auth-image">
+                  <img src="{{ asset('backend/images/authentication.svg') }}" class="mx-auto img-fluid"  alt="images">
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
-
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
-
-            <x-primary-button class="ms-4">
-                {{ __('Register') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+      </div>
+    </div>
+    <script src="{{ asset('backend/libs/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('backend/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('backend/libs/simplebar/simplebar.min.js') }}"></script>
+    <script src="{{ asset('backend/libs/node-waves/waves.min.js') }}"></script>
+    <script src="{{ asset('backend/libs/waypoints/lib/jquery.waypoints.min.js') }}"></script>
+    <script src="{{ asset('backend/libs/jquery.counterup/jquery.counterup.min.js') }}"></script>
+    <script src="{{ asset('backend/libs/feather-icons/feather.min.js') }}"></script>
+    <script src="{{ asset('backend/js/app.js') }}"></script>
+  </body>
+</html>

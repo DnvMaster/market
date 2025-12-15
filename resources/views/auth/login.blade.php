@@ -33,7 +33,7 @@
 
                       <div class="form-group mb-3">
                         <label for="password" class="form-label">{{ __('Ваш пароль') }}</label>
-                        <input class="form-control" type="password" name="password" id="password">
+                        <input class="form-control" type="password" name="password" id="password"  placeholder="{{ __('**********') }}">
                       </div>
                 
                       <div class="form-group d-flex mb-3">
@@ -57,7 +57,6 @@
                         </div>
                       </div>
                     </form>
-                    <div class="saprator my-4"><span>{{ __('или войдите через') }}</span></div>
                     <div class="text-center text-muted mb-4">
                       <p class="mb-0">{{ __("У вас нет аккаунта?") }}<a class='text-primary ms-2 fw-medium' href='{{ route('register') }}'>{{ __('Зарегистрируйтесь') }}</a></p>
                     </div>
