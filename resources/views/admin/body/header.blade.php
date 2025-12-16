@@ -20,62 +20,7 @@
                         <i data-feather="maximize" class="align-middle fullscreen noti-icon"></i>
                     </button>
                 </li>
-                <li class="dropdown notification-list topbar-dropdown">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                        <i data-feather="bell" class="noti-icon"></i>
-                        <span class="badge bg-danger rounded-circle noti-icon-badge">{{ __('9') }}</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-end dropdown-lg">
-        
-                        <div class="dropdown-item noti-title">
-                            <h5 class="m-0">
-                                <span class="float-end">
-                                    <a href="" class="text-dark"><small> {{ __('Удалить все') }}</small></a>
-                                </span>
-                                {{ __('Уведомление') }}
-                            </h5>
-                        </div>
-        
-                        <div class="noti-scroll" data-simplebar>
-        
-                            <a href="javascript:void(0);" class="dropdown-item notify-item text-muted link-primary active">
-                                <div class="notify-icon">
-                                    <img src="{{ asset('backend/images/users/user-12.jpg') }}" class="img-fluid rounded-circle" alt=" {{ __('User image') }}">
-                                </div>
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <p class="notify-details"> {{ __('Иван Федорович') }}</p>
-                                    <small class="text-muted"> {{ __('5 минут назад') }}</small>
-                                </div>
-                                <p class="mb-0 user-msg">
-                                    <small class="fs-14"> {{ __('Завершено') }} <span class="text-reset"> {{ __('Создаём только лучшее') }}</span></small>
-                                </p>
-                            </a>
-        
-                            <a href="javascript:void(0);" class="dropdown-item notify-item text-muted link-primary">
-                                <div class="notify-icon">
-                                    <img src="{{ asset('backend/images/users/user-2.jpg') }}" class="img-fluid rounded-circle" alt=" {{ __('user image') }}">
-                                </div>
-                                <div class="notify-content">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <p class="notify-details"> {{ __('Виктория Овсиенко') }}</p>
-                                        <small class="text-muted"> {{ __('1 минуту назад') }}</small>
-                                    </div>
-                                    <div class="d-flex mt-2 align-items-center">
-                                        <div class="notify-sub-icon">
-                                            <i class="mdi mdi-download-box text-dark"></i>
-                                        </div>
-                                        <div>
-                                            <p class="notify-details mb-0"> {{ __('Тёмный режим') }}</p>
-                                            <small class="text-muted"> {{ __('Размер 2.4 Мб') }}</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-        
-                        </div>
-                        <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item notify-all"> {{ __('Просмотреть все') }}<i class="fe-arrow-right"></i></a> 
-                    </div>
-                </li>
+               
                 <li class="dropdown notification-list topbar-dropdown">
                     <a class="nav-link dropdown-toggle nav-user me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                         <img src="{{ asset('backend/images/users/user-11.jpg') }}" alt="user-image" class="rounded-circle">
@@ -87,7 +32,7 @@
                         <div class="dropdown-header noti-title">
                             <h6 class="text-overflow m-0"> {{ __('Здравствуйте') }}</h6>
                         </div>
-                        <a href="pages-profile.html" class="dropdown-item notify-item">
+                        <a href="{{ route('admin.profile')}}" class="dropdown-item notify-item">
                             <i class="mdi mdi-account-circle-outline fs-16 align-middle"></i>
                             <span> {{ __('Аккаунт') }}</span>
                         </a>
