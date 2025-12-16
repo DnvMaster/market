@@ -49,3 +49,4 @@ Laravel Breeze — минималистичный пакет аутентифи�
 -  Template/blade - header  - Выход ссылка
 -  Login - Форма входа  
 -  Register - Форма регистрации
+-  Validation form login & password

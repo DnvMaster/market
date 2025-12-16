@@ -26,14 +26,25 @@
                   <div class="pt-0">
                     <form action="{{ route('login') }}" method="POST" class="my-4">
                       @csrf
+
+                      @if(session('error'))
+                        {{ session('error') }}
+                      @endif
+
                       <div class="form-group mb-3">
                         <label for="email" class="form-label">{{ __("Електронный адрес") }}</label>
                         <input class="form-control" type="email" name="email" id="email" placeholder="{{ __("Введите электронный адрес") }}">
+                        @error('email')
+                          <smail class="text-danger">{{ $message }}</smail>
+                        @enderror
                       </div>
 
                       <div class="form-group mb-3">
                         <label for="password" class="form-label">{{ __('Ваш пароль') }}</label>
                         <input class="form-control" type="password" name="password" id="password"  placeholder="{{ __('**********') }}">
+                        @error('password')
+                          <smail class="text-danger">{{ $message }}</smail>
+                        @enderror
                       </div>
                 
                       <div class="form-group d-flex mb-3">
