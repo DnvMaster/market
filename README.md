@@ -17,7 +17,7 @@ Market.loc задуман как прототип онлайн‑маркетп�
 # Установка Laravel 12
 
 ## Требования
-- PHP >= 8.2
+- PHP >= 8.2  MySQL-8.0  Laravel 12
 - Composer (последняя версия)
 - Расширения PHP: OpenSSL, PDO, Mbstring, Tokenizer, XML, Ctype, JSON
 - База данных: MySQL/MariaDB, PostgreSQL или SQLite
