@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -19,12 +20,10 @@ class AdminController extends Controller
     {
         $id = Auth::user()->id;
         $data = User::Find($id);
-
         $data->name = $request->name;
         $data->phone = $request->phone;
         $data->email = $request->email;
         $data->address = $request->address;
-
         $oldPhotoPath = $data->photo;
          if($request->hasFile('photo')) {
             $file = $request->file('photo');
@@ -36,12 +35,36 @@ class AdminController extends Controller
             }
         }
         $data->save();
-
         $notification = array(
             'message' => 'Профиль успешно обновлён.',
             'alert-type' => 'success',
         );
         return redirect()->back()->with($notification);
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $user = Auth::user();
+        $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required|confirmed',
+        ]);
+        if(!Hash::check($request->old_password,$user->password)) {
+            $notification = array(
+                'message' => 'Старый пароль не совпадает',
+                'alert-type' => 'error',
+            );
+            return back()->with($notification);
+        }
+        User::whereId($user->id)->update([
+            'password' => Hash::make($request->new_password),
+        ]);
+        Auth::logout();
+        $notification = array(
+            'message' => 'Пароль успешно обновлён.',
+            'alert-type' => 'success',
+        );
+        return redirect()->route('login')->with($notification);
     }
 
     public function adminLogout(Request $request)
