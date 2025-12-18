@@ -14,6 +14,10 @@
                     </div>
                 </li>
             </ul>
+            @php
+                $id = Auth::user()->id;
+                $profile = App\Models\User::find($id);
+            @endphp
             <ul class="list-unstyled topnav-menu mb-0 d-flex align-items-center">
                 <li class="d-none d-sm-flex">
                     <button type="button" class="btn nav-link" data-toggle="fullscreen">
@@ -23,9 +27,9 @@
                
                 <li class="dropdown notification-list topbar-dropdown">
                     <a class="nav-link dropdown-toggle nav-user me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                        <img src="{{ asset('backend/images/users/user-11.jpg') }}" alt="user-image" class="rounded-circle">
+                        <img src="{{ (!empty($profile->photo)) ? url('upload/user_images/'.$profile->photo) : url('upload/no_image.jpg') }}" alt="{{ $profile->name }}" class="rounded-circle">
                         <span class="pro-user-name ms-1">
-                             {{ __('Николай') }} <i class="mdi mdi-chevron-down"></i> 
+                             {{ $profile->name }} <i class="mdi mdi-chevron-down"></i> 
                         </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end profile-dropdown ">

@@ -19,10 +19,10 @@
                     <div class="card-body">
                         <div class="align-items-center">
                             <div class="d-flex align-items-center">
-                                <img class="rounded-circle avatar-xxl img-thumbnail float-start" src="{{ asset('backend/images/users/user-11.jpg') }}" alt="">
+                                <img class="rounded-circle avatar-xxl img-thumbnail float-start" src="{{ (!empty($profile->photo)) ? url('upload/user_images/'.$profile->photo) : url('upload/no_image.jpg') }}" alt="{{ __('Изображение профиля') }}">
                                 <div class="overflow-hidden ms-4">
-                                <h4 class="m-0 text-dark fs-20">{{ __('DnvMaster') }}</h4>
-                                <p class="my-1 text-muted fs-16">{{ __('dnvmaster50@gmail.com') }}</p>
+                                <h4 class="m-0 text-dark fs-20">{{ $profile->name }}</h4>
+                                <p class="my-1 text-muted fs-16">{{ $profile->email }}</p>
                             </div>
                         </div>
                     </div>
@@ -39,14 +39,14 @@
                                         </div>
                                     </div>
 
-                                    <form action="{--{ route('profile.store') }--}" method="post" enctype="multipart/form-data">
+                                    <form action="{{ route('profile.store') }}" method="post" enctype="multipart/form-data">
                                         @csrf
                                          <div class="card-body">
 
                                              <div class="form-group mb-3 row">
                                                 <label class="form-label">{{ __('Имя') }}</label>
                                                 <div class="col-lg-12 col-xl-12">
-                                                    <input class="form-control" type="text" name="name" value="{--{ $profile->name }--}">
+                                                    <input class="form-control" type="text" name="name" value="{{  $profile->name }}">
                                                 </div>
                                             </div>
 
@@ -55,7 +55,7 @@
                                                 <div class="col-lg-12 col-xl-12">
                                                     <div class="input-group">
                                                         <span class="input-group-text"><i class="mdi mdi-phone-outline"></i></span>
-                                                        <input class="form-control" type="text" name="phone" value="{--{ $profile->phone }--}" aria-describedby="basic-addon1">
+                                                        <input class="form-control" type="text" name="phone" value="{{ $profile->phone }}" aria-describedby="basic-addon1">
                                                     </div>
                                                 </div>
                                             </div>
@@ -65,7 +65,7 @@
                                                 <div class="col-lg-12 col-xl-12">
                                                     <div class="input-group">
                                                         <span class="input-group-text"><i class="mdi mdi-email"></i></span>
-                                                        <input type="email" name="email" class="form-control" value="{--{ $profile->email }--}" aria-describedby="basic-addon1">
+                                                        <input type="email" name="email" class="form-control" value="{{ $profile->email }}" aria-describedby="basic-addon1">
                                                     </div>
                                                 </div>
                                             </div>
@@ -73,7 +73,7 @@
                                             <div class="form-group mb-3 row">
                                                 <label class="form-label">{{ __('Адрес') }}</label>
                                                 <div class="col-lg-12 col-xl-12">
-                                                    <textarea class="form-control" name="address">{--{ $profile->address }--}</textarea>
+                                                    <textarea class="form-control" name="address">{{ $profile->address }}</textarea>
                                                 </div>
                                             </div>
 
@@ -87,7 +87,7 @@
                                             <div class="form-group mb-3 row">
                                                 <label class="form-label"></label>
                                                 <div class="col-lg-12 col-xs-12">
-                                                    <img id="showImage" src="{--{ (!empty($profile->photo)) ? url('upload/user_images/'.$profile->photo) : url('upload/no_image.jpg') }--}" class="rounded-circle avatar-xxl img-thumbnail float-start" alt="image profile">
+                                                    <img id="showImage" src="{{ (!empty($profile->photo)) ? url('upload/user_images/'.$profile->photo) : url('upload/no_image.jpg') }}" class="rounded-circle avatar-xxl img-thumbnail float-start" alt="image profile">
                                                 </div>
                                             </div>
 
